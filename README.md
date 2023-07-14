@@ -1,6 +1,6 @@
-### 1. stwórz modele autorów, artykułów, tagów oraz notatek wraz z ich podstawowymi polami (imię/nazwisko/nazwa artykułu/treść itd)
+### ~~1. stwórz modele autorów, artykułów, tagów oraz notatek wraz z ich podstawowymi polami (imię/nazwisko/nazwa artykułu/treść itd)~~
 
-### 2. modele połącz ze sobą relacjami adekwatnie do ich przeznaczenia i użyteczności
+### ~~2. modele połącz ze sobą relacjami adekwatnie do ich przeznaczenia i użyteczności~~
 
 ### 3. dla artykułów zaimplementuj możliwość dodawania plików multimedialnych (osadzanie filmów nt z serwisu youtube oraz możliwość umieszczania zdjęć z komputera)
 

@@ -1,9 +1,16 @@
 from django.urls import reverse
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from django.views.generic.edit import FormMixin
 
 from articles.forms import CommentForm
 from articles.models import Article
+
+
+class ArticlesListView(ListView):
+    model = Article
+    context_object_name = 'articles_list'
+    paginate_by = 5
+
 
 
 class ArticleDetailView(FormMixin, DetailView):
