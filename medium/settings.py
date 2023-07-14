@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "articles.apps.ArticlesConfig",
-    "authors.apps.AuthorsConfig",
 ]
 
 MIDDLEWARE = [
