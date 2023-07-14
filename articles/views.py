@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.views.generic import DetailView
 
-# Create your views here.
+from articles.models import Article
+
+
+class ArticleDetailView(DetailView):
+    model = Article
+    context_object_name = 'article'

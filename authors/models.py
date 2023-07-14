@@ -4,7 +4,6 @@ from django.db import models
 class Author(models.Model):
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
-    academic_title = models.CharField(max_length=16)
 
     @property
     def full_name(self):
