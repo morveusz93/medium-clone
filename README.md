@@ -4,7 +4,7 @@
 
 ### 3. dla artykułów zaimplementuj możliwość dodawania plików multimedialnych (osadzanie filmów nt z serwisu youtube oraz możliwość umieszczania zdjęć z komputera)
 
-### 4. pod artykułami zaimplementuj funkcjonalność komentarzy disqus (możliwość komentowania artykułów przez różnych użytkowników)
+### ~~4. pod artykułami zaimplementuj funkcjonalność komentarzy disqus (możliwość komentowania artykułów przez różnych użytkowników)~~
 
 ### ~~5. artykuły muszą mieć możliwość dodawania ich wraz z odpowiednimi tagami~~
 

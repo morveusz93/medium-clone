@@ -10,6 +10,10 @@
         {{ article.content }}
     </div>
     <div class="comments">
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-default">Send</button>
+        </form>
         <p>Comments:</p>
         {% if article.comment_set.all %}
             {% for comment in article.comment_set.all %}
