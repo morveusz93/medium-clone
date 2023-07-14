@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Article(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=64)
     pub_date = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
     author = models.ForeignKey('Author', on_delete=models.CASCADE)
@@ -28,7 +28,17 @@ class Author(models.Model):
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=64)
 
     def __str__(self):
         return self.name
+
+
+class Comment(models.Model):
+    author = models.CharField(max_length=64)
+    content = models.TextField()
+    article = models.ForeignKey('Article', on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created']
