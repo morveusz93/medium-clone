@@ -32,13 +32,3 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class Comment(models.Model):
-    author = models.CharField(max_length=64)
-    content = models.TextField()
-    article = models.ForeignKey('Article', on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        ordering = ['-created']

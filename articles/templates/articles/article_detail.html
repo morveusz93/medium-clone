@@ -10,21 +10,20 @@
         {{ article.content }}
     </div>
     <div class="comments">
-        <form method="POST" class="post-form">{% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="save btn btn-default">Send</button>
-        </form>
-        <p>Comments:</p>
-        {% if article.comment_set.all %}
-            {% for comment in article.comment_set.all %}
-            <div class="comment">
-                <p>Author: {{ comment.author }} - {{ comment.created }}</p>
-                <p>Author: {{ comment.content }}</p>
-            </div>
-            {% endfor %}
-        {% else %}
-            <p>No comments. Maybe write one?</p>
-        {% endif %}
+        <div id="disqus_thread"></div>
+        <script>
+            var disqus_config = function () {
+                this.page.url = "http://127.0.0.1:8000/{{ request.path }}"
+                this.page.identifier = "article-detail/" + article.id;
+            };
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://medium-clone.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 </div>
-    {% endblock %}
+{% endblock %}
