@@ -1,25 +1,23 @@
-### 1. stwórz modele autorów, artykułów, tagów oraz notatek wraz z ich podstawowymi polami (imię/nazwisko/nazwa artykułu/treść itd)
+# MEDIUM CLONE
 
-### 2. modele połącz ze sobą relacjami adekwatnie do ich przeznaczenia i użyteczności
+Instalcja
+=====
 
+Instalcja środowiska za pomocą poetry
 
-### 4. pod artykułami zaimplementuj funkcjonalność komentarzy disqus (możliwość komentowania artykułów przez różnych użytkowników)
+```commandline
+poetry install
+```
 
-### 5. artykuły muszą mieć możliwość dodawania ich wraz z odpowiednimi tagami
+Uruchomienie
+==
+Aby uruchomić projekt po zainstalowaniu środowiska nalezy wykoanać kroki:
 
-
-### 7. do dodawania wpisów wykorzystaj stronę admina z django
-
-### 8. na stronie głównej wyświetlaj 5 najnowszych artykułów (posortowane po dacie stworzenia artykułu)
-
-### 9. jeżeli artykułów jest więcej niż 5, dodaj paginację (możliwość przejścia na stronę z kolejnymi wynikami)
-
-### 10. stwórz podstronę z tagami, która również będzie wyświetlać 5 najnowszych tagów (posortowanie, paginacja)
-
-### 3. dla artykułów zaimplementuj możliwość dodawania plików multimedialnych (osadzanie filmów nt z serwisu youtube oraz możliwość umieszczania zdjęć z komputera)
-
-### 11. Do stworzonej funkcjonalności napisz testy, wykorzystując djangowy TestCase
-
-### 6.front oprzyj o HTML oraz bootstrap
-
-### W swojej aplikacji pomiń wadę rozwiązania, polegającą na możliwości edycji nieswoich artykułów
+1. ``python manage.py migrate``
+2. ``python manage.py createsuperuser`` 
+Tutaj podajemy dane takie jak login i hasło dla admina
+3. ``python manage.py populate_db``
+Jeżeli chcesz wygenerować fake'owe dane do bazy użyj komendy
+4. ``python manage.py runserver``
+5. [front](localhost:8000)
+6. [admin site](localhost:8000/admin)
