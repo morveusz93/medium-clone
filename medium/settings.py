@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -27,8 +26,50 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+TINYMCE_JS_URL = 'https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'
+TINYMCE_COMPRESSOR = False
 
-# Application definition
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': "silver",
+    'resize': "false",
+    'menubar': "edit insert format tools table help",
+    'toolbar':
+        "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "
+        "aligncenter alignright alignjustify | numlist bullist checklist | forecolor backcolor "
+        "casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview "
+        "save | insertfile image media pageembed template link codesample | a11ycheck ltr rtl | "
+        "showcomments addcomment code typography",
+    'plugins':
+        "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen "
+        "insertdatetime media table powerpaste advcode help wordcount spellchecker typography",
+    'selector': "textarea",
+    "height": 600,
+    "file_picker_callback": """function (cb, value, meta) {
+        var input = document.createElement("input");
+        input.setAttribute("type", "file");
+        if (meta.filetype == "image") {
+            input.setAttribute("accept", "image/*");
+        }
+        if (meta.filetype == "media") {
+            input.setAttribute("accept", "video/*");
+        }
+
+        input.onchange = function () {
+            var file = this.files[0];
+            var reader = new FileReader();
+            reader.onload = function () {
+                var id = "blobid" + (new Date()).getTime();
+                var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                var base64 = reader.result.split(",")[1];
+                var blobInfo = blobCache.create(id, file, base64);
+                blobCache.add(blobInfo);
+                cb(blobInfo.blobUri(), { title: file.name });
+            };
+            reader.readAsDataURL(file);
+        };
+        input.click();
+    }""",
+}
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -38,6 +79,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    "tinymce",
     "articles.apps.ArticlesConfig",
 ]
 
@@ -73,7 +115,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "medium.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -83,7 +124,6 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -103,7 +143,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -114,7 +153,6 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

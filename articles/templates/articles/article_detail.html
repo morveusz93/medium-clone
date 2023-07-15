@@ -7,7 +7,7 @@
     <p>Publication date: {{ article.pub_date }} UTC</p>
     <p>Tags: {% for tag in article.tags.all %} <a href="{% url 'tag-detail' tag.id %}" type="button">{{ tag.name }}</a> {% endfor %}</p>
     <div class="article-content">
-        {{ article.content }}
+        {{ article.content|safe }}
     </div>
     <div class="comments">
         <div id="disqus_thread"></div>
