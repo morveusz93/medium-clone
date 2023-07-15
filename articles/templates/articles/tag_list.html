@@ -3,11 +3,10 @@
 
     <h1>Recently created</h1>
     <div class="list-group">
-        {% for article in article_list %}
+        {% for tag in tag_list %}
         <div>
-            <a href="{% url 'article-detail' article.id %}" type="button">
-                {{ article.title }}
-                {{ article.author }}
+            <a href="{% url 'tag-detail' tag.id %}" type="button">
+                > {{ tag.name }} <
             </a>
         </div>
         {% endfor %}
