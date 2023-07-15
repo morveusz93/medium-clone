@@ -1,0 +1,42 @@
+<div class="pagination btn-group my-3 justify-content-center">
+    <span class="step-links">
+        {% for page_number in page_obj.paginator.page_range %}
+            {% if page_number == 1 %}
+                {% if page_obj.number == page_number %}
+                    <button class="btn btn-outline-primary active">
+                        <span>{{ page_number }} <span class="sr-only"></span></span>
+                    </button>
+                {% else %}
+                    <a href="?page={{ page_number }}" class="btn btn-outline-primary">
+                        {{ page_number }}
+                    </a>
+            {% endif %}
+            {% endif %}
+            {% if page_number != 1 and page_number != page_obj.paginator.page_range|last %}
+                {% if page_obj.number == page_number %}
+                    <a class="btn btn-outline-primary active" href="">{{ page_number }}</a>
+                {% else %}
+                    {% if page_obj.number|add:-3 == page_number %}
+                        <button disabled class="btn btn-outline-secondary">...</button>
+                    {% endif %}
+                    {% if page_obj.number|add:2 >= page_number and page_obj.number|add:-2 <= page_number %}
+                        <a class="btn btn-outline-primary" href="?page={{ page_number }}">{{ page_number }}</a>
+                    {% endif %}
+                    {% if page_obj.number|add:3 == page_number %}
+                        <a class="btn btn-outline-primary" href="">...</a>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+            {% if page_number == page_obj.paginator.page_range|last %}
+                {% if page_obj.number == page_number %}
+                    <button class="btn btn-outline-primary active">
+                        <span>{{ page_number }} <span class="sr-only"></span></span>
+                    </button>        {% else %}
+                    <a class="btn btn-outline-primary" href="?page={{ page_obj.paginator.page_range|last }}">{{ page_obj.paginator.page_range|last }}</a>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </span>
+</div>
+
+
