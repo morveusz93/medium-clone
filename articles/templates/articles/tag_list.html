@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h1>Tag list</h1>
-    <div class="list-group">
-        {% for tag in tag_list %}
-        <div>
-            <a href="{% url 'tag-detail' tag.id %}" type="button">
-                > {{ tag.name }} <
-            </a>
-        </div>
-        {% endfor %}
+<h1>Tag list</h1>
+<div class="list-group">
+    {% for tag in tag_list %}
+    <div>
+        <a href="{% url 'tag-detail' tag.id %}" class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between my-1">
+                <h5 class="mb-1">{{ tag.name }}</h5>
+             </div>
+            <div>
+            <span class="badge bg-dark">
+                Articles in tag: {{ tag.article_set.all.count }}
+            </span>
+            </div>
+        </a>
     </div>
+    {% endfor %}
+</div>
 {% include "pagination.html" %}
 {% endblock %}

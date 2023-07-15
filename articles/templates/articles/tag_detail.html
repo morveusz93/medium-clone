@@ -5,13 +5,24 @@
     <h1>{{ tag }}</h1>
     <p>Created: {{ tag.created_date }} UTC</p>
     <div>
-        {% for article in object_list %}
-        <p>
-            <a href="{% url 'article-detail' article.id %}" type="button">
-                {{ article }}
-            </a>
-        </p>
-        {% endfor %}
+    {% for article in object_list %}
+    <div>
+        <a href="{% url 'article-detail' article.id %}" class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between my-1">
+                <h5 class="mb-1">{{ article.title }}</h5>
+                <small>{{ article.pub_date }}</small>
+             </div>
+            <p class="mb-1">{{ article.author }}</p>
+            <div>
+                {% for tag in article.tags.all %}
+                <span class="badge bg-dark">
+                    {{ tag.name }}
+                </span>
+                {% endfor %}
+            </div>
+        </a>
+    </div>
+    {% endfor %}
     </div>
 {% include "pagination.html" %}
 </div>

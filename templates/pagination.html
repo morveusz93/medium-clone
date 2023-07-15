@@ -10,7 +10,7 @@
                     <a href="?page={{ page_number }}" class="btn btn-outline-primary">
                         {{ page_number }}
                     </a>
-            {% endif %}
+                {% endif %}
             {% endif %}
             {% if page_number != 1 and page_number != page_obj.paginator.page_range|last %}
                 {% if page_obj.number == page_number %}
@@ -27,12 +27,15 @@
                     {% endif %}
                 {% endif %}
             {% endif %}
-            {% if page_number == page_obj.paginator.page_range|last %}
-                {% if page_obj.number == page_number %}
-                    <button class="btn btn-outline-primary active">
-                        <span>{{ page_number }} <span class="sr-only"></span></span>
-                    </button>        {% else %}
-                    <a class="btn btn-outline-primary" href="?page={{ page_obj.paginator.page_range|last }}">{{ page_obj.paginator.page_range|last }}</a>
+            {% if page_obj.paginator.page_range|last > 1 %}
+                {% if page_number == page_obj.paginator.page_range|last %}
+                    {% if page_obj.number == page_number %}
+                        <button class="btn btn-outline-primary active">
+                            <span>{{ page_number }} <span class="sr-only"></span></span>
+                        </button>
+                    {% else %}
+                        <a class="btn btn-outline-primary" href="?page={{ page_obj.paginator.page_range|last }}">{{ page_obj.paginator.page_range|last }}</a>
+                    {% endif %}
                 {% endif %}
             {% endif %}
         {% endfor %}
