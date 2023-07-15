@@ -26,11 +26,3 @@ class ArticleFactory(DjangoModelFactory):
 
     class Meta:
         model = Article
-
-    @post_generation
-    def tags(self, create, extracted):
-        if not create:
-            return
-        if extracted:
-            for tag in extracted:
-                self.tags.add(tag)

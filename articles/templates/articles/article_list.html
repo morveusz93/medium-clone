@@ -6,8 +6,7 @@
         {% for article in article_list %}
         <div>
             <a href="{% url 'article-detail' article.id %}" type="button">
-                {{ article.title }}
-                {{ article.author }}
+                {{ article }}
             </a>
         </div>
         {% endfor %}

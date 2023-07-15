@@ -2,13 +2,13 @@
 {% block content %}
 
 <div>
-    <h1>{{ tag.name }}</h1>
+    <h1>{{ tag }}</h1>
     <p>Created: {{ tag.created_date }} UTC</p>
     <div>
         {% for article in object_list %}
         <p>
             <a href="{% url 'article-detail' article.id %}" type="button">
-                {{ article.title }} ~ by {{ article.author }} / {{ article.pub_date }}
+                {{ article }}
             </a>
         </p>
         {% endfor %}
