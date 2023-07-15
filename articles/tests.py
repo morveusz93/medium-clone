@@ -7,7 +7,7 @@ from articles.factories import ArticleFactory, TagFactory
 class TestArticleListView(TestCase):
     def setUp(self):
         self.articles = []
-        self.url = reverse('article-list')
+        self.url = reverse("article-list")
 
     def test_article_at_list_view(self):
         self.create_articles()
@@ -15,7 +15,7 @@ class TestArticleListView(TestCase):
         response_article_list = list(response.context_data["article_list"])
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Article list')
+        self.assertContains(response, "Article list")
         self.assertEquals(len(response_article_list), len(self.articles))
         self.assertListEqual(self.articles, response_article_list)
 
@@ -42,7 +42,7 @@ class TestArticleDetailView(TestCase):
         self.article = ArticleFactory.build()
         self.article.author.save()
         self.article.save()
-        self.url = reverse('article-detail', kwargs={'pk': self.article.pk})
+        self.url = reverse("article-detail", kwargs={"pk": self.article.pk})
 
     def test_article_detail_view(self):
         response = self.client.get(self.url)
@@ -52,12 +52,12 @@ class TestArticleDetailView(TestCase):
 
     def test_article_in_context(self):
         response = self.client.get(self.url)
-        self.assertEqual(response.context['article'], self.article)
+        self.assertEqual(response.context["article"], self.article)
 
 
 class TagListViewTest(TestCase):
     def setUp(self):
-        self.url = reverse('tag-list')
+        self.url = reverse("tag-list")
         self.tags = []
 
     def test_tag_list_view(self):
@@ -66,7 +66,7 @@ class TagListViewTest(TestCase):
         response_tag_list = list(response.context_data["tag_list"])
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Tag list')
+        self.assertContains(response, "Tag list")
         self.assertEquals(len(response_tag_list), len(self.tags))
         self.assertListEqual(self.tags, response_tag_list)
 
@@ -96,7 +96,7 @@ class TagDetailViewTest(TestCase):
         self.article.save()
         self.article.tags.add(self.tag)
         self.article.save()
-        self.url = reverse('tag-detail', kwargs={'pk': self.tag.pk})
+        self.url = reverse("tag-detail", kwargs={"pk": self.tag.pk})
 
     def test_tag_detail_view(self):
         response = self.client.get(self.url)
@@ -106,5 +106,5 @@ class TagDetailViewTest(TestCase):
 
     def test_tag_detail_context(self):
         response = self.client.get(self.url)
-        self.assertEqual(response.context['tag'], self.tag)
-        self.assertEqual(list(response.context['object_list']), [self.article])
+        self.assertEqual(response.context["tag"], self.tag)
+        self.assertEqual(list(response.context["object_list"]), [self.article])

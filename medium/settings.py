@@ -26,23 +26,21 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-TINYMCE_JS_URL = 'https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'
+TINYMCE_JS_URL = "https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
 TINYMCE_COMPRESSOR = False
 
 TINYMCE_DEFAULT_CONFIG = {
-    'theme': "silver",
-    'resize': "false",
-    'menubar': "edit insert format tools table help",
-    'toolbar':
-        "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "
-        "aligncenter alignright alignjustify | numlist bullist checklist | forecolor backcolor "
-        "casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview "
-        "save | insertfile image media pageembed template link codesample | a11ycheck ltr rtl | "
-        "showcomments addcomment code typography",
-    'plugins':
-        "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen "
-        "insertdatetime media table powerpaste advcode help wordcount spellchecker typography",
-    'selector': "textarea",
+    "theme": "silver",
+    "resize": "false",
+    "menubar": "edit insert format tools table help",
+    "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "
+    "aligncenter alignright alignjustify | numlist bullist checklist | forecolor backcolor "
+    "casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview "
+    "save | insertfile image media pageembed template link codesample | a11ycheck ltr rtl | "
+    "showcomments addcomment code typography",
+    "plugins": "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen "
+    "insertdatetime media table powerpaste advcode help wordcount spellchecker typography",
+    "selector": "textarea",
     "height": 600,
     "file_picker_callback": """function (cb, value, meta) {
         var input = document.createElement("input");
@@ -78,7 +76,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "tinymce",
     "articles.apps.ArticlesConfig",
 ]
@@ -98,9 +95,7 @@ ROOT_URLCONF = "medium.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [
-            os.path.join(BASE_DIR, 'templates')
-        ],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

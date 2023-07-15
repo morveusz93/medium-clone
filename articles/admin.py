@@ -6,9 +6,7 @@ from articles.models import Article, Author, Tag
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    formfield_overrides = {
-        models.TextField: {'widget': TinyMCE()}
-    }
+    formfield_overrides = {models.TextField: {"widget": TinyMCE()}}
 
 
 admin.site.register(Article, ArticleAdmin)
