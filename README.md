@@ -12,7 +12,7 @@
 
 ### ~~7. do dodawania wpisów wykorzystaj stronę admina z django~~
 
-### 8. na stronie głównej wyświetlaj 5 najnowszych artykułów (posortowane po dacie stworzenia artykułu)
+### ~~8. na stronie głównej wyświetlaj 5 najnowszych artykułów (posortowane po dacie stworzenia artykułu)~~
 
 ### 9. jeżeli artykułów jest więcej niż 5, dodaj paginację (możliwość przejścia na stronę z kolejnymi wynikami)
 

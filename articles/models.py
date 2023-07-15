@@ -6,7 +6,7 @@ class Article(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
     author = models.ForeignKey('Author', on_delete=models.CASCADE)
-    tags = models.ManyToManyField('Tag')
+    tags = models.ManyToManyField('Tag', blank=True)
 
     def __str__(self):
         return f"{self.title} - by {self.author}"
@@ -28,7 +28,8 @@ class Author(models.Model):
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=64)
+    name = models.CharField(max_length=64, unique=True)
+    created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
